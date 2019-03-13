@@ -1,13 +1,53 @@
 import React, { Component } from 'react';
+import YouTubePopUp from "../../components/YoutubePopup";
 import bannerImage from '../../assets/images/banner-bg-style-4.png';
 import infoIcon from '../../assets/images/icons/checklist.svg';
 import SellIcon from '../../assets/images/icons/debit-card.svg';
 import DateIcon from '../../assets/images/icons/calendar.svg';
 
-class App extends Component {
+const config = {
+  disableOn: 700,
+  type: 'iframe',
+  mainClass: 'mfp-fade',
+  removalDelay: 160,
+  preloader: false,
+  fixedContentPos: false
+}
+
+class LandingPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: ""
+    }
+  }
+
+  
+
+  handleOpenFullForm = () => {
+    const { firstName, lastName, email } = this.state
+    this.props.history.push({
+      pathname: `/evaluation-form`,
+      state: { 
+        firstName,
+        lastName,
+        email
+      }
+    })
+  }
+
+  handleChange = (e) => {
+    e.persist()
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
+    const { firstName, lastName, email } = this.state
+    console.log(this.state)
     return (
-      <div className="App">
+      <div>
         <div>
           {/* Banner Area */}
           <section className="banner_area banner_a1">
@@ -16,30 +56,30 @@ class App extends Component {
               <div className="row">
                 <div className="col-md-8">
                   <h2 className="wow fadeInUp">Selling your land Just Got easier</h2>
+                  <div className="play-button-section">
+                    <YouTubePopUp/>
+                  </div>
                 </div>
-
                 <div className="col-md-4 bg-white shadow p-3 evaluation-form">
                   <h5 className="pb-3">Request for Land Evaluation</h5>
                   <div className="input-group row">
-                    <div className="col-md-12 mx-3">
-                      <input type="text" className="form-control" placeholder="First Name" />
+                    <div className="col-md-12 mx-3 mb-3">
+                      <input type="text" className="form-control" placeholder="First Name" name="firstName" value={firstName} onChange={this.handleChange} />
                     </div>
-                    <div className="col-md-12 mx-3">
-                      <input type="text" className="form-control" placeholder="Last Name" />
+                    <div className="col-md-12 mx-3 mb-3">
+                      <input type="text" className="form-control" placeholder="Last Name" name="lastName" value={lastName} onChange={this.handleChange} />
                     </div>
-                    <div className="col-md-12 mx-3">
-                      <input type="email" className="form-control" placeholder="Email Address" />
+                    <div className="col-md-12 mx-3 mb-3">
+                    <input type="text" className="form-control" placeholder="Email Address" name="email" value={email} onChange={this.handleChange} />
                     </div>
                     <div className="col-12 mx-3">
-                        <button className="theme_btn btn-sm btn-block btn">Continue</button>
+                      <button className="theme_btn btn-sm btn-block btn" onClick={this.handleOpenFullForm}>Continue</button>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* <a href="#" className="theme_btn wow fadeInUp" data-wow-delay="0.2s">REQUEST FOR EVALUATION </a> */}
             </div>
-            {/* <img src={bannerImage} alt className="banner_img_2 wow fadeInRight" /> */}
+
           </section>
           {/* Banner Area */}
           {/* Service Icon Area */}
@@ -108,69 +148,10 @@ class App extends Component {
               </div>
             </div>
           </section>
-          
-          {/* Footer Area Start */}
-          <section className="footer_area footer_2">
-            <div className="container">
-              <div className="row bottom_border">
-                <div className="col-lg-4 col-sm-6 wow fadeIn">
-                  
-                  <div className="download_2">
-                    <h6>We are social</h6>
-                    <ul>
-                      <li><a href="#"><i className="fab fa-facebook" /></a></li>
-                      <li><a href="#"><i className="fab fa-twitter" /></a></li>
-                      <li><a href="#"><i className="fab fa-dribbble" /></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.2s">
-                  <h3>About Company</h3>
-                  <ul>
-                    <li><a href="#">How it works</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Development</a></li>
-                    <li><a href="#">Digital markeing</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Security</a></li>
-                  </ul>
-                </div>
-                <div className="col-lg-2 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.4s">
-                  <h3>Information</h3>
-                  <ul>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Pricing plan</a></li>
-                    <li><a href="#">Google Map</a></li>
-                    <li><a href="#">Apps store</a></li>
-                    <li><a href="#">About</a></li>
-                  </ul>
-                </div>
-                <div className="col-lg-3 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.2s">
-                  <h3>About Company</h3>
-                  <ul>
-                    <li><a href="#">How it works</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">Development</a></li>
-                    <li><a href="#">Digital markeing</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Security</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="copy_right">
-                <div className="row m-0">
-                  <div className="col-lg-9 col-md-8 p-0">
-                  </div>
-                  <p className="col-lg-3 col-md-4 order-md-first text-white">© 2019 All rights reserved</p>
-                </div>
-              </div>
-            </div>
-            <div className="shap" />
-          </section>
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default LandingPage;
