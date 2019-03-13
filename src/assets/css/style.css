@@ -2,15 +2,26 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900");
 
+/* Play button section */
+.play-button-section {
+  position: absolute;
+  bottom: -100px;
+  left: 270px;
+  z-index: 99999;
+}
+
 /* Evaluation Form */
 .evaluation-form {
+  z-index: 9999 !important;
  border-radius: 5px;
 }
 
-.evaluation-form input {
-  margin-bottom: 20px;
-  margin-right: 20px;
-  
+/* .evaluation-form input {
+  position: absolute;
+} */
+
+.evaluation-form-section {
+  background-color: rgb(197, 197, 197);
 }
 
 /* How it works */
@@ -808,7 +819,7 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
   display: block;
   overflow: hidden;
   background-image: linear-gradient(to left, #4e5ae5, #4855e1, #5661eb, #5965ee, #5d69f1);
-  padding: 100px 0 540px;
+  padding: 100px 0 450px;
   position: relative;
   z-index: 1;
 }
@@ -833,6 +844,7 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
   background: url("../images/banner-bg-1.png") no-repeat left bottom;
   width: 100%;
   height: 659px;
+  z-index: 1 !important;
 }
 .banner_area .banner_bg {
   position: absolute !important;
