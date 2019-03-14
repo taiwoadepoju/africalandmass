@@ -16,6 +16,15 @@
  border-radius: 5px;
 }
 
+/* Remove document Icon */
+.remove-document-icon {
+  font-size: 20px;
+}
+
+.remove-document-icon:hover {
+  cursor: pointer;
+}
+
 /* .evaluation-form input {
   position: absolute;
 } */
