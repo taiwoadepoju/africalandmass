@@ -4,30 +4,32 @@ import bannerImage from '../../assets/images/banner-bg-style-4.png';
 import infoIcon from '../../assets/images/icons/checklist.svg';
 import SellIcon from '../../assets/images/icons/debit-card.svg';
 import DateIcon from '../../assets/images/icons/calendar.svg';
-
-const config = {
-  disableOn: 700,
-  type: 'iframe',
-  mainClass: 'mfp-fade',
-  removalDelay: 160,
-  preloader: false,
-  fixedContentPos: false
-}
+import { EMAIL_PATTERN } from '../../assets/_constants';
 
 class LandingPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      triggeredSubmit: false,
+      emailError: false,
       firstName: "",
       lastName: "",
       email: ""
     }
   }
 
-  
-
   handleOpenFullForm = () => {
+    this.setState({ triggeredSubmit: true })
     const { firstName, lastName, email } = this.state
+    if( firstName === "" || lastName === "" || email === ""){
+      return;
+    }
+
+    const emailCheck = EMAIL_PATTERN.test(email)
+    if(emailCheck === false){
+      this.setState({ emailError: true})
+      return;
+    }
     this.props.history.push({
       pathname: `/evaluation-form`,
       state: { 
@@ -44,18 +46,18 @@ class LandingPage extends Component {
   }
 
   render() {
-    const { firstName, lastName, email } = this.state
-    console.log(this.state)
+    const { firstName, lastName, email, triggeredSubmit, emailError } = this.state
+   
     return (
       <div>
         <div>
           {/* Banner Area */}
           <section className="banner_area banner_a1">
-            <img src={bannerImage} alt className="banner_bg" />
+            <img src={bannerImage} alt="banner" className="banner_bg" />
             <div className="container">
               <div className="row">
                 <div className="col-md-8">
-                  <h2 className="wow fadeInUp">Selling your land Just Got easier</h2>
+                  <h2 className="wow fadeInUp">Selling your Land Just Got Easier</h2>
                   <div className="play-button-section">
                     <YouTubePopUp/>
                   </div>
@@ -65,12 +67,16 @@ class LandingPage extends Component {
                   <div className="input-group row">
                     <div className="col-md-12 mx-3 mb-3">
                       <input type="text" className="form-control" placeholder="First Name" name="firstName" value={firstName} onChange={this.handleChange} />
+                      {(!!triggeredSubmit && firstName === "") && <span className="text-danger">First name is required</span>}
                     </div>
                     <div className="col-md-12 mx-3 mb-3">
                       <input type="text" className="form-control" placeholder="Last Name" name="lastName" value={lastName} onChange={this.handleChange} />
+                      {(!!triggeredSubmit && lastName === "") && <span className="text-danger">Last name is required</span>}
                     </div>
                     <div className="col-md-12 mx-3 mb-3">
                     <input type="text" className="form-control" placeholder="Email Address" name="email" value={email} onChange={this.handleChange} />
+                    {(!!triggeredSubmit && email === "") &&<span className="text-danger">Email address is required</span>}
+                    {emailError && <span className="text-danger">Invalid email address</span>}
                     </div>
                     <div className="col-12 mx-3">
                       <button className="theme_btn btn-sm btn-block btn" onClick={this.handleOpenFullForm}>Continue</button>
@@ -82,6 +88,7 @@ class LandingPage extends Component {
 
           </section>
           {/* Banner Area */}
+
           {/* Service Icon Area */}
           <section className="service_icon_area sia_4 how-it-works">
             <div className="container">
@@ -91,21 +98,21 @@ class LandingPage extends Component {
               <div className="row">
                 <div className="col-xl-4 col-md-6 wow fadeIn">
                   <div className="single_box active">
-                    <a href="#" className="heding">Enter your land information</a>
+                    <span className="heding">Enter your land information</span>
                     <img src={infoIcon} alt="enter-land-info" className="works-icon" />
                   </div>
                 </div>
                 <div className="col-xl-4 col-md-6 wow fadeIn" data-wow-delay="0.2s">
                   <div className="single_box">
                     <i className="flaticon-tick tick t_2" />
-                    <a href="#" className="heding">Book a Date</a>
+                    <span className="heding">Book a Date</span>
                     <img src={DateIcon} alt="enter-land-info" className="works-icon" />
                   </div>
                 </div>
                 <div className="col-xl-4 col-md-6 wow fadeIn" data-wow-delay="0.3s">
                   <div className="single_box">
                     <i className="flaticon-tick tick t_3" />
-                    <a href="#" className="heding">Sell your Land</a>
+                    <span className="heding">Sell your Land</span>
                     <img src={SellIcon} alt="enter-land-info" className="works-icon" />
                   </div>
                 </div>
