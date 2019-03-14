@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Label, Col, Row, FormGroup } from "reactstrap";
-import { YES, NO, SUCCESS_RESPONSE } from '../../assets/_constants';
+import { YES, NO, SUCCESS_RESPONSE, EMAIL_PATTERN } from '../../assets/_constants';
 import Datetime from "react-datetime";
 import moment from "moment";
 import Select from "react-select";
@@ -84,6 +84,12 @@ class EvaluationForm extends Component {
     }
     if(selectedFiles.length < 1){
       notify.toastError("You must upload all necessary documents!")
+      return;
+    }
+
+    const emailCheck = EMAIL_PATTERN.test(email)
+    if(emailCheck === false){
+      notify.toastError("Invalid Email Address")
       return;
     }
 
