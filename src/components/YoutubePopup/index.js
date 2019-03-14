@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ModalVideo from 'react-modal-video'
-import Fullscreen from "react-full-screen"
+//import ModalVideo from 'react-modal-video'
+//import Fullscreen from "react-full-screen"
 
 class Youtube extends Component {
   constructor() {
@@ -17,22 +17,25 @@ class Youtube extends Component {
   }
 
   render() {
-    const { isFullScreen } = this.state
+    //const { isFullScreen } = this.state
     return (
-      <Fullscreen
-        enabled={isFullScreen}
-        onChange={isFullScreen => this.setState({ isFullScreen })}
-      >
-        <div className="mt-5 youtube-section">
-          <ModalVideo 
-            channel='youtube' 
-            isOpen={this.state.isOpen} 
-            videoId='scAfY0Sa5as' 
-            onClose={() => this.setState({ isOpen: false, isFullScreen: false })} 
-          />
-          <button className="play-btn" onClick={this.openModal} href="/"></button>
-        </div>
-      </Fullscreen>
+      // <Fullscreen
+      //   enabled={isFullScreen}
+      //   onChange={isFullScreen => this.setState({ isFullScreen })}
+      // >
+      //   <div className="mt-5 youtube-section">
+      //     <ModalVideo 
+      //       channel='youtube' 
+      //       isOpen={this.state.isOpen} 
+      //       videoId='scAfY0Sa5as' 
+      //       onClose={() => this.setState({ isOpen: false, isFullScreen: false })} 
+      //     />
+      //     <button className="play-btn" onClick={this.openModal} href="/"></button>
+      //   </div>
+      // </Fullscreen>
+      <div>
+        <button className="play-btn"></button>
+      </div>
     )
   }
 }
