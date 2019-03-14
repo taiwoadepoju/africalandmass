@@ -24,7 +24,12 @@ class Youtube extends Component {
         onChange={isFullScreen => this.setState({ isFullScreen })}
       >
         <div className="mt-5 youtube-section">
-          <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='scAfY0Sa5as' onClose={() => this.setState({ isOpen: false, isFullScreen: false })} />
+          <ModalVideo 
+            channel='youtube' 
+            isOpen={this.state.isOpen} 
+            videoId='scAfY0Sa5as' 
+            onClose={() => this.setState({ isOpen: false, isFullScreen: false })} 
+          />
           <button className="play-btn" onClick={this.openModal} href="/"></button>
         </div>
       </Fullscreen>
