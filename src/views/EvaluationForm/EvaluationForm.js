@@ -30,7 +30,7 @@ class EvaluationForm extends Component {
       triggeredSubmit: false,
       existingStructure: "",
       existingStructureDetails: "",
-      dateTIme: "",
+      dateTime: "",
       selectedFiles: [],
       firstName: props.location.state && props.location.state.firstName,
       lastName: props.location.state && props.location.state.lastName,
@@ -52,7 +52,7 @@ class EvaluationForm extends Component {
   }
 
   handleChangeDate = (date) => {
-    return this.setState({ dateTIme: moment(date._d).format("YYYY-MM-DD") })
+    return this.setState({ dateTime: moment(date._d).format("YYYY-MM-DD hh:mm:ss") })
   }
 
   handleChange = (e) => {
@@ -76,9 +76,9 @@ class EvaluationForm extends Component {
 
   handleUpload = async () => {
     this.setState({ triggeredSubmit: true })
-    const { firstName, lastName, email, location, size, phone, dateTIme, existingStructure, existingStructureDetails, address, selectedFiles } = this.state
+    const { firstName, lastName, email, location, size, phone, dateTime, existingStructure, existingStructureDetails, address, selectedFiles } = this.state
 
-    if(firstName === "" || lastName === "" || email === "" || location === "" || size === "" || phone === "" || dateTIme === "" || existingStructure === "" || (existingStructure === "true" && existingStructureDetails === "") || address === ""){
+    if(firstName === "" || lastName === "" || email === "" || location === "" || size === "" || phone === "" || dateTime === "" || existingStructure === "" || (existingStructure === "true" && existingStructureDetails === "") || address === ""){
       notify.toastError("You must fill all required fields!")
       return;
     }
@@ -106,7 +106,6 @@ class EvaluationForm extends Component {
       if (res.status === SUCCESS_RESPONSE) {
         await this.setState({ uploadedFile: res.response });
         this.handleSubmit();
-        notify.toastSuccess("Your Request has been submitted successfully");
       }
       else {
         notify.toastError(`${res.response}`);
@@ -118,26 +117,30 @@ class EvaluationForm extends Component {
   }
 
   handleSubmit = () => {
-    const { firstName, lastName, email, description, location, size, phone, dateTIme, existingStructure, existingStructureDetails, address, uploadedFile } = this.state
+    const { firstName, lastName, email, description, location, size, phone, dateTime, existingStructure, existingStructureDetails, address, uploadedFile } = this.state
     const payload = {
-      firstName,
-      lastName,
+      firstname: firstName,
+      lastname: lastName,
       email,
       description,
       location,
       size,
       phone,
-      dateTIme,
+      dateTime,
       existingStructure,
       existingStructureDetails,
       address,
       uploadedFile
     }
+
     return evaluatorService.requestForEvaluation(payload)
       .then(res => {
         this.setState({ loading: false, triggeredSubmit: false })
         if (res.status === SUCCESS_RESPONSE) {
-          notify.toastSuccess("Successful")
+          notify.toastSuccess("Your request has been submitted successfully")
+          setTimeout(() => {
+            window.location.reload()
+          }, 3000);
         } else {
           notify.toastError(`${res.response}`)
         }
@@ -146,7 +149,7 @@ class EvaluationForm extends Component {
   }
 
   render() {
-    const { dateTIme, selectedFiles, existingStructure, firstName, email, lastName, address, description, size, phone, existingStructureDetails, loading, triggeredSubmit, location } = this.state
+    const { dateTime, selectedFiles, existingStructure, firstName, email, lastName, address, description, size, phone, existingStructureDetails, loading, triggeredSubmit, location } = this.state
 
     return (
       <div className="evaluation-form-section">
@@ -172,7 +175,7 @@ class EvaluationForm extends Component {
                     {(!!triggeredSubmit && email === "") && <p className="text-danger text-left" >Email is required</p>}
                   </div>
                   <div className="col-6">
-                    <Input type="text" className="form-control" placeholder="Phone Number" name="phone" value={phone} onChange={this.handleChange} />
+                    <Input type="number" className="form-control" placeholder="Phone Number" name="phone" value={phone} onChange={this.handleChange} />
                     {(!!triggeredSubmit && phone === "") && <p className="text-danger text-left" >Phone number is required</p>}
                   </div>
                 </div>
@@ -243,13 +246,13 @@ class EvaluationForm extends Component {
                   <div className="col-6">
                     <Datetime
                       //closeOnSelect
-                      date={dateTIme}
+                      date={dateTime}
                       inputFormat="YYYY-MM-DD hh:mm:ss"
                       dateFormat="MMM, DD, YYYY"
                       onChange={this.handleChangeDate}
                       inputProps={{ placeholder: "Select Evaluation date" }}
                     />
-                    {(!!triggeredSubmit && dateTIme === "") && <p className="text-danger text-left" >Evaluation date is required</p>}
+                    {(!!triggeredSubmit && dateTime === "") && <p className="text-danger text-left" >Evaluation date is required</p>}
                   </div>
                 </div>
 
@@ -272,10 +275,8 @@ class EvaluationForm extends Component {
                     )}
                   </Dropzone>
                 </div>
-
               </div>
 
-              
               <button className="theme_btn btn btn-md mx-auto d-block mt-5" onClick={this.handleUpload}>{loading ? "Sending..." : "Submit"}</button>
               <br/>
             </div>

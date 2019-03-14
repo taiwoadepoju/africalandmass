@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import YouTubePopUp from "../../components/YoutubePopup";
 import bannerImage from '../../assets/images/banner-bg-style-4.png';
-import infoIcon from '../../assets/images/icons/checklist.svg';
-import SellIcon from '../../assets/images/icons/debit-card.svg';
-import DateIcon from '../../assets/images/icons/calendar.svg';
 import { EMAIL_PATTERN } from '../../assets/_constants';
+import HowItWorks from "./HowItWorks";
+import OtherSections from "./OtherSections";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -85,76 +84,11 @@ class LandingPage extends Component {
                 </div>
               </div>
             </div>
-
-          </section>
-          {/* Banner Area */}
-
-          {/* Service Icon Area */}
-          <section className="service_icon_area sia_4 how-it-works">
-            <div className="container">
-              <div className="tittle">
-                <h3 className="text-center font-weight-bold">How it works</h3>
-              </div>
-              <div className="row">
-                <div className="col-xl-4 col-md-6 wow fadeIn">
-                  <div className="single_box active">
-                    <span className="heding">Enter your land information</span>
-                    <img src={infoIcon} alt="enter-land-info" className="works-icon" />
-                  </div>
-                </div>
-                <div className="col-xl-4 col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                  <div className="single_box">
-                    <i className="flaticon-tick tick t_2" />
-                    <span className="heding">Book a Date</span>
-                    <img src={DateIcon} alt="enter-land-info" className="works-icon" />
-                  </div>
-                </div>
-                <div className="col-xl-4 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                  <div className="single_box">
-                    <i className="flaticon-tick tick t_3" />
-                    <span className="heding">Sell your Land</span>
-                    <img src={SellIcon} alt="enter-land-info" className="works-icon" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          {/* End Service Icon Area */}
-
-          {/* Other Sections */}
-          <section>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-6 p-5">
-                  <h2>Sell your land at the fastest time possible!</h2>
-                  <p className="style_text">
-                    Our team of well seasoned evaluators are just a click away.
-                    Our team of well seasoned evaluators are just a click away.
-                    Our team of well seasoned evaluators are just a click away.
-                    Our team of well seasoned evaluators are just a click away.
-                  </p>
-                </div>
-                <div className="col-md-6 split-section-right"></div>
-              </div>
-            </div>
           </section>
 
-          <section>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-6 split-section-left"></div>
-                <div className="col-md-6 p-5">
-                  <h2>Want to buy a land? It's now easier than ever!</h2>
-                  <p className="style_text">
-                    our team is ready to put you through.
-                    our team is ready to put you through.
-                    our team is ready to put you through.
-                    our team is ready to put you through.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+          <HowItWorks/>
+          <OtherSections/>
+          
         </div>
       </div>
     );
