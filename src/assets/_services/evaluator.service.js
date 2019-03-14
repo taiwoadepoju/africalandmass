@@ -9,7 +9,7 @@ export const evaluatorService = {
 
 //Request for evaluation
 function requestForEvaluation(payload) {
-  return appHelpers.postFormDataRequest(`${BASE_API_URL}/land-evaluation-0.0.1-SNAPSHOT/landevaluation/register`, payload, null)
+  return appHelpers.postRequest(`${BASE_API_URL}/land-evaluation-0.0.1-SNAPSHOT/landevaluation/register`, payload, null)
     .then(res => {
       return appHelpers.formatPromiseResponse(res.data)
     }).catch(
