@@ -12,42 +12,42 @@ class Footer extends Component {
               <div className="download_2">
                 <h6>We are social</h6>
                 <ul>
-                  <li><a href="#"><i className="fab fa-facebook" /></a></li>
-                  <li><a href="#"><i className="fab fa-twitter" /></a></li>
-                  <li><a href="#"><i className="fab fa-dribbble" /></a></li>
+                  <li><Link to ="/"><i className="fab fa-facebook" /></Link></li>
+                  <li><Link to ="/"><i className="fab fa-twitter" /></Link></li>
+                  <li><Link to ="/"><i className="fab fa-dribbble" /></Link></li>
                 </ul>
               </div>
             </div>
             <div className="col-lg-3 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.2s">
               <h3>About Company</h3>
               <ul>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Development</a></li>
-                <li><a href="#">Digital markeing</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Security</a></li>
+                <li><Link to ="/">How it works</Link></li>
+                <li><Link to ="/">Design</Link></li>
+                <li><Link to ="/">Development</Link></li>
+                <li><Link to ="/">Digital markeing</Link></li>
+                <li><Link to ="/">Services</Link></li>
+                <li><Link to ="/">Security</Link></li>
               </ul>
             </div>
             <div className="col-lg-2 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.4s">
               <h3>Information</h3>
               <ul>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Pricing plan</a></li>
-                <li><a href="#">Google Map</a></li>
-                <li><a href="#">Apps store</a></li>
-                <li><a href="#">About</a></li>
+                <li><Link to ="/">Team</Link></li>
+                <li><Link to ="/">Pricing plan</Link></li>
+                <li><Link to ="/">Google Map</Link></li>
+                <li><Link to ="/">Apps store</Link></li>
+                <li><Link to ="/">About</Link></li>
               </ul>
             </div>
             <div className="col-lg-3 col-sm-6 footer_about wow fadeIn" data-wow-delay="0.2s">
               <h3>About Company</h3>
               <ul>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Development</a></li>
-                <li><a href="#">Digital markeing</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Security</a></li>
+                <li><Link to ="/">How it works</Link></li>
+                <li><Link to ="/">Design</Link></li>
+                <li><Link to ="/">Development</Link></li>
+                <li><Link to ="/">Digital markeing</Link></li>
+                <li><Link to ="/">Services</Link></li>
+                <li><Link to ="/">Security</Link></li>
               </ul>
             </div>
           </div>
