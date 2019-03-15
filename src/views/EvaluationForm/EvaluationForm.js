@@ -139,7 +139,7 @@ class EvaluationForm extends Component {
         this.setState({ loading: false, triggeredSubmit: false })
         if (res.status === SUCCESS_RESPONSE) {
           notify.toastSuccess("Your request has been submitted successfully")
-          history.push("/")
+          history.goBack()
         } else {
           notify.toastError(`${res.response}`)
         }
