@@ -7,6 +7,7 @@ import Select from "react-select";
 import Dropzone from 'react-dropzone';
 import { evaluatorService } from '../../assets/_services/evaluator.service';
 import notify from '../../assets/_utils/notify';
+import { history } from '../../assets/_helpers';
 
 const selectOptions = [
   { label: "Lagos", value: "Lagos" },
@@ -138,9 +139,7 @@ class EvaluationForm extends Component {
         this.setState({ loading: false, triggeredSubmit: false })
         if (res.status === SUCCESS_RESPONSE) {
           notify.toastSuccess("Your request has been submitted successfully")
-          setTimeout(() => {
-            window.location.reload()
-          }, 3000);
+          history.push("/")
         } else {
           notify.toastError(`${res.response}`)
         }
