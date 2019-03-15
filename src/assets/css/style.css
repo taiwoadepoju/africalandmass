@@ -982,7 +982,7 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
 .coming_soon_area {
   display: block;
   overflow: hidden;
-  background: url("../images/coming-soon.png") no-repeat top center;
+  /* background: url("../images/coming-soon.png") no-repeat top center; */
   padding: 80px 15px 280px;
   text-align: center;
 }
@@ -3133,7 +3133,7 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
 
 .single_pages:after {
   right: 0;
-  background: url("../images/blog/bs-shap.png") no-repeat;
+  /* background: url("../images/blog/bs-shap.png") no-repeat; */
   width: 95px;
   height: 211px;
   z-index: -1;
