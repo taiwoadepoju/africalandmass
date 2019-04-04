@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/images/logo.jpg";
 
 
 class Header extends Component {
@@ -7,10 +8,10 @@ class Header extends Component {
     return (
       <header className="main_header_area sticky-top shadow">   
         <nav className="navbar navbar-expand-lg"> 
-          <h6 className="float-left pt-2">Africa Land Mass</h6>
-          <Link className="navbar-brand" to="/">
-            {/* <img src="images/logo-2.png" alt />   */}
-          </Link> 
+          <img src={Logo} alt="africa land mass logo" className="img-fluid land-mass-logo" /> 
+          {/* <Link className="navbar-brand" to="/">
+            <img src={Logo} alt="africa land mass logo" className="img-fluid land-mass-logo" />  
+          </Link>  */}
           {/* Small Divice Menu*/}
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar_supported"> 
             <i className="fa fa-bars" />
