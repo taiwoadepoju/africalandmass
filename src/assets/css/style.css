@@ -835,7 +835,7 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
   display: block;
   overflow: hidden;
   /* background-image: linear-gradient(to left, #4e5ae5, #4855e1, #5661eb, #5965ee, #5d69f1); */
-  background-image: linear-gradient(to left, #faa435, #d37f11, #814d09, #a78150, #4b3212);
+  background-image: linear-gradient(to left, #dd891c, #d37f11, #d68418, #faa435, #faa435);
   padding: 100px 0 450px;
   position: relative;
   z-index: 1;
@@ -845,7 +845,8 @@ body a:focus, body a:hover, body .btn:focus, body .btn:hover, body button:focus,
   position: absolute;
   top: -170px;
   right: -280px;
-  background: #814d09;
+  /* background-image: linear-gradient(to left, #faa435, #d37f11, #814d09, #a78150, #a78150); */
+  background: #faa435;
   height: 908px;
   width: 1015px;
   border-radius: 10px;
